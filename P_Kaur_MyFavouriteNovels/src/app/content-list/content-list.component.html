@@ -1,0 +1,79 @@
+<div class="p-4">
+  <p class="display-1 text-white">My Novels</p>
+  <div class="row">
+    <div
+      class="col-md-4 mb-4"
+      *ngFor="
+        let myFavNovel of myFavNovels;
+        let i = index;
+        let isFirst = first;
+        let isLast = last
+      "
+    >
+      <div
+        class="card text-white"
+        [appHoverAffect]="isFirst || isLast ? 'card-border' : ''"
+        style="background-color: #212121"
+      >
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 p-0 m-0">
+              <div [ngSwitch]="myFavNovel?.imgURL">
+                <img
+                  class="card-img-left"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPluCRPIrTtwOmt2_3st6nSklWmgtBfVKGcw&usqp=CAU"
+                  height="300"
+                  width="200"
+                  *ngSwitchCase=""
+                  (click)="showNovalInfo(myFavNovel.id, myFavNovel.title)"
+                  alt="Card image cap"
+                />
+
+                <img
+                  class="card-img-left"
+                  src="{{ myFavNovel.imgURL }}"
+                  height="300"
+                  width="200"
+                  *ngSwitchDefault
+                  (click)="showNovalInfo(myFavNovel.id, myFavNovel.title)"
+                  alt="Card image cap"
+                />
+              </div>
+            </div>
+            <div class="col-md-8">
+              <h5
+                class="card-title"
+                *ngIf="myFavNovel?.title"
+                [appHoverAffect]="'font-style'"
+              >
+                {{ myFavNovel.title }}
+              </h5>
+              <p
+                class="card-text"
+                *ngIf="myFavNovel?.description"
+                [appHoverAffect]="'font-style'"
+              >
+                {{ myFavNovel.description }}
+              </p>
+
+              <p
+                class="card-text"
+                *ngIf="myFavNovel?.type"
+                [appHoverAffect]="'font-style'"
+              >
+                <span>Type</span> {{ myFavNovel?.type }}
+              </p>
+              <p
+                class="card-text"
+                *ngIf="myFavNovel?.creator"
+                [appHoverAffect]="'font-style'"
+              >
+                <span>Creator</span> {{ myFavNovel?.creator }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

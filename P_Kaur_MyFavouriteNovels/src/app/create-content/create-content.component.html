@@ -1,0 +1,134 @@
+<p
+  class="btn btn-dark d-block"
+  data-toggle="collapse"
+  data-target="#collapseOne"
+  aria-expanded="true"
+  aria-controls="collapseOne"
+>
+  Insert New Novel
+</p>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+  <p class="alert d-block text-danger alert-error" *ngIf="!formContentValid">
+    Sorry! content failed to be added.
+  </p>
+  <div class="row">
+    <div class="col-md-2 mb-4">
+      <div class="form-group">
+        <label class="text-white">ID</label>
+        <input
+          type="number"
+          class="form-control"
+          name="id"
+          ngModel
+          required
+          placeholder="Required Field"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="form-group">
+        <label class="text-white">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          name="title"
+          ngModel
+          required
+          placeholder="Required Field"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="form-group">
+        <label class="text-white">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          name="description"
+          ngModel
+          required
+          placeholder="Required Field"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label class="text-white">Creator</label>
+        <input
+          type="text"
+          class="form-control"
+          name="creator"
+          ngModel
+          placeholder="Optional Field"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label class="text-white">Image Url</label>
+        <input
+          type="text"
+          class="form-control"
+          name="imgURL"
+          ngModel
+          placeholder="Optional Field"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label class="text-white">Publisher</label>
+        <input
+          type="text"
+          class="form-control"
+          name="publisher"
+          ngModel
+          placeholder="Optional Field"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label class="text-white">Color</label>
+        <input
+          type="text"
+          class="form-control"
+          name="color"
+          ngModel
+          required
+          placeholder="Required Field"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <label class="text-white">Font Family</label>
+        <select
+          class="form-control"
+          name="fontFamily"
+          [(ngModel)]="fontFamily"
+          ngModel
+          required
+        >
+          <option>Poppins</option>
+          <option>OpenSans</option>
+          <option>Roboto</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <div class="form-group">
+        <button class="btn btn-success mt-4">Add Novel</button>
+      </div>
+    </div>
+  </div>
+</form>
+<hr />

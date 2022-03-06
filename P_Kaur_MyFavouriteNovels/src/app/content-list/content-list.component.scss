@@ -1,0 +1,21 @@
+.card-title,
+.card-text {
+  padding-left: 26px !important;
+}
+
+.border__card {
+  border: 2px solid black !important;
+}
+
+.result__found_border {
+  transition: 0.3s ease-in-out;
+  border: 8px solid greenyellow !important;
+  box-shadow: 0px 12px 24px rgba(172, 255, 47, 0.301);
+}
+.success-txt {
+  color: green;
+}
+
+.error-txt {
+  color: red;
+}

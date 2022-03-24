@@ -1,0 +1,46 @@
+<div class="p-4">
+  <p class="display-1 text-white">My Novels</p>
+  <div class="row">
+    <div
+      class="col-md-4 mb-4"
+      *ngFor="let myFavNovel of myFavNovels; let i = index"
+    >
+      <div
+        class="card text-white"
+        style="background-color: #212121"
+        [ngClass]="i == 0 ? 'border__card' : ''"
+        *ngIf="i < 5"
+      >
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 p-0 m-0">
+              <img
+                class="card-img-left"
+                src="{{ myFavNovel.imgURL }}"
+                height="400"
+                width="200"
+                (click)="showNovalInfo(myFavNovel.id, myFavNovel.title)"
+                alt="Card image cap"
+              />
+            </div>
+            <div class="col-md-8">
+              <h5 class="card-title" *ngIf="myFavNovel?.title">
+                {{ myFavNovel.title }}
+              </h5>
+              <p class="card-text" *ngIf="myFavNovel?.description">
+                {{ myFavNovel.description }}
+              </p>
+
+              <p class="card-text" *ngIf="myFavNovel?.type">
+                <strong>Type</strong> {{ myFavNovel?.type }}
+              </p>
+              <p class="card-text" *ngIf="myFavNovel?.creator">
+                <strong>Creator</strong> {{ myFavNovel?.creator }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

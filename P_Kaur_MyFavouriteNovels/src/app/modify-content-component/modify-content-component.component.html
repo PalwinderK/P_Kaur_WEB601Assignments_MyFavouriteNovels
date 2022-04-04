@@ -1,0 +1,130 @@
+<div class="addContent">
+  <button mat-button class="addBtn" (click)="openDialog()">
+    {{ btnLabel }}
+  </button>
+</div>
+
+<ng-template #dialogRef let-mydata>
+  <h2>{{ btnLabel }}</h2>
+  <ul *ngIf="mydata">
+    <li *ngFor="let item of mydata">{{ item }}</li>
+  </ul>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate class="p-4">
+    <br />
+    <mat-grid-list cols="4" rowHeight="6:1">
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label class="label">ID</mat-label>
+          <input
+            [disabled]="btnLabel == 'Add Novel' ? true : false"
+            type="number"
+            matInput
+            class="form-control"
+            name="id"
+            [ngModel]="updateNovelData?.id"
+            value=""
+            placeholder="Optional Field"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label class="label">Title</mat-label>
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            name="title"
+            [ngModel]="updateNovelData?.title"
+            required
+            placeholder="Required Field"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="label" appearance="fill">
+          <mat-label>Description</mat-label>
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            name="description"
+            [ngModel]="updateNovelData?.description"
+            required
+            placeholder="Required Field"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="label" appearance="fill">
+          <mat-label>Creator</mat-label>
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            name="creator"
+            [ngModel]="updateNovelData?.creator"
+            placeholder="Optional Field"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="label" appearance="fill">
+          <mat-label>Image Url</mat-label>
+          <input
+            type="text"
+            matInput
+            class="form-control"
+            name="imgURL"
+            [ngModel]="updateNovelData?.imgURL"
+            required
+            placeholder="Required Field"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="label" appearance="fill">
+          <mat-label>Publisher</mat-label>
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            name="publisher"
+            [ngModel]="updateNovelData?.publisher"
+            placeholder="Optional Field"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="label" appearance="fill">
+          <mat-label>Color</mat-label>
+          <input
+            matInput
+            type="text"
+            class="form-control"
+            name="color"
+            [ngModel]="updateNovelData?.color"
+            required
+            placeholder="Required Field"
+          />
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-button mat-flat-button class="mat-primary">
+          {{ btnLabel }}
+        </button>
+        &nbsp;
+        <button mat-button mat-dialog-close="I am from dialog land...">
+          Close
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</ng-template>

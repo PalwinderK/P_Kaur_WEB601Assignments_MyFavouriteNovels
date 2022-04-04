@@ -1,0 +1,16 @@
+.card-title,
+.card-text {
+  padding-left: 26px !important;
+}
+
+.border__card {
+  border: 2px solid black !important;
+}
+
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  width: 200px;
+}

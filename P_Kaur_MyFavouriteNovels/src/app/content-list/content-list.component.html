@@ -1,0 +1,77 @@
+<app-modify-content-component
+  (childEvent)="addContentToList($event)"
+  [btnLabel]="btnName"
+></app-modify-content-component>
+
+<div class="p-4">
+  <h1>My Novels</h1>
+
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div
+        fxFlex="25%"
+        fxFlex.xs="100%"
+        fxFlex.sm="33%"
+        *ngFor="
+          let myFavNovel of myFavNovels;
+          let i = index;
+          let isFirst = first;
+          let isLast = last
+        "
+      >
+        <mat-card
+          class="mat-elevation-z4"
+          height="400"
+          [appHoverAffect]="isFirst || isLast ? 'card-border' : ''"
+        >
+          <mat-card-header>
+            <mat-card-title>{{ myFavNovel.title }}</mat-card-title>
+          </mat-card-header>
+
+          <img
+            height="100"
+            src="{{
+              myFavNovel?.imgURL
+                ? myFavNovel.imgURL
+                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPluCRPIrTtwOmt2_3st6nSklWmgtBfVKGcw&usqp=CAU'
+            }}"
+            (click)="showNovalInfo(myFavNovel.id, myFavNovel.title)"
+            alt="Card image cap"
+          />
+
+          <mat-card-content>
+            <p
+              class="card-text"
+              *ngIf="myFavNovel?.description"
+              [appHoverAffect]="'font-style'"
+            >
+              {{ myFavNovel.description }}
+            </p>
+
+            <p
+              class="card-text"
+              *ngIf="myFavNovel?.type"
+              [appHoverAffect]="'font-style'"
+            >
+              <span>Type</span> {{ myFavNovel?.type }}
+            </p>
+            <p
+              class="card-text"
+              *ngIf="myFavNovel?.creator"
+              [appHoverAffect]="'font-style'"
+            >
+              <span>Creator</span> {{ myFavNovel?.creator }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <app-modify-content-component
+              (childEvent)="addContentToList($event)"
+              [btnLabel]="'Update Novel'"
+              [updateNovelData]="myFavNovel"
+            ></app-modify-content-component>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

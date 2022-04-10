@@ -1,0 +1,48 @@
+<div class="p-4">
+  <h1>Novels Details</h1>
+
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+      <div fxFlex="50%" fxFlex.xs="100%" fxFlex.sm="100%">
+        <mat-card class="mat-elevation-z4" height="400">
+          <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="50%">
+              <img
+                src="{{
+                  novel?.imgURL
+                    ? novel?.imgURL
+                    : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPluCRPIrTtwOmt2_3st6nSklWmgtBfVKGcw&usqp=CAU'
+                }}"
+                alt="Card image cap"
+              />
+            </div>
+
+            <div fxFlex="50%" fxFlex.xs="50%" fxFlex.sm="50%">
+              <h1>
+                <mat-card-title>{{ novel?.title }}</mat-card-title>
+              </h1>
+              <h3 class="card-text" *ngIf="novel?.description">
+                {{ novel?.description }}
+              </h3>
+
+              <p
+                class="card-text"
+                *ngIf="novel?.type"
+                [appHoverAffect]="'font-style'"
+              >
+                <span>Type</span> {{ novel?.type }}
+              </p>
+              <p
+                class="card-text"
+                *ngIf="novel?.creator"
+                [appHoverAffect]="'font-style'"
+              >
+                <span>Creator</span> {{ novel?.creator }}
+              </p>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
